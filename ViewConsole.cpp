@@ -18,7 +18,7 @@ void ViewConsole::start()
 
 		do {
 			printf(turnX ? "player X, your turn: " : "player O, your turn: ");
-			scanf_s("%d %d", &x, &y);
+            scanf("%d %d", &x, &y);
 			correct = board->makeMove(x, y, turnX ? X : O);
 		} while (!correct);
 		
@@ -30,13 +30,13 @@ void ViewConsole::start()
 	switch (board->getState())
 	{
 	case XWIN:
-		printf("X wins");
+        printf("X wins\n");
 		break;
 	case OWIN:
-		printf("O wins");
+        printf("O wins\n");
 		break;
 	case DRAW:
-		printf("draw");
+        printf("draw\n");
 		break;
 	}
 	

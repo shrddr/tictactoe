@@ -2,8 +2,8 @@
 
 Board::Board()
 {
-	for (size_t x = 0; x < SIZE; x++)
-		for (size_t y = 0; y < SIZE; y++)
+    for (int x = 0; x < SIZE; x++)
+        for (int y = 0; y < SIZE; y++)
 			b[x][y] = EMPTY;
 }
 
@@ -35,10 +35,10 @@ State Board::getState()
 	int xcount, ocount;
 
 	// vertically
-	for (size_t x = 0; x < SIZE; x++)
+    for (int x = 0; x < SIZE; x++)
 	{
 		xcount = ocount = 0;
-		for (size_t y = 0; y < SIZE; y++)
+        for (int y = 0; y < SIZE; y++)
 		{
 			if (b[x][y] == X) xcount++;
 			else xcount = 0;
@@ -50,10 +50,10 @@ State Board::getState()
 	}
 
 	// horizontally
-	for (size_t y = 0; y < SIZE; y++)
+    for (int y = 0; y < SIZE; y++)
 	{
 		xcount = ocount = 0;
-		for (size_t x = 0; x < SIZE; x++)
+        for (int x = 0; x < SIZE; x++)
 		{
 			if (b[x][y] == X) xcount++;
 			else xcount = 0;
@@ -65,12 +65,12 @@ State Board::getState()
 	}
 
 	// diagonally from left to bottom
-	for (size_t i = 0; i < SIZE; i++)
+    for (int i = 0; i < SIZE; i++)
 	{
 		int x = 0;
 		int y = i;
 		xcount = ocount = 0;
-		for (size_t d = 0; d < SIZE - i; d++)
+        for (int d = 0; d < SIZE - i; d++)
 		{
 			if (b[x+d][y+d] == X) xcount++;
 			else xcount = 0;
@@ -82,12 +82,12 @@ State Board::getState()
 	}
 
 	// diagonally from top to right
-	for (size_t i = 0; i < SIZE; i++)
+    for (int i = 0; i < SIZE; i++)
 	{
 		int x = i;
 		int y = 0;
 		xcount = ocount = 0;
-		for (size_t d = 0; d < SIZE - i; d++)
+        for (int d = 0; d < SIZE - i; d++)
 		{
 			if (b[x+d][y+d] == X) xcount++;
 			else xcount = 0;
@@ -99,12 +99,12 @@ State Board::getState()
 	}
 
 	// diagonally from top to left
-	for (size_t i = 0; i < SIZE; i++)
+    for (int i = 0; i < SIZE; i++)
 	{
 		int x = i;
 		int y = 0;
 		xcount = ocount = 0;
-		for (size_t d = 0; d < i + 1; d++)
+        for (int d = 0; d < i + 1; d++)
 		{
 			if (b[x - d][y + d] == X) xcount++;
 			else xcount = 0;
@@ -116,12 +116,12 @@ State Board::getState()
 	}
 
 	// diagonally from right to bottom
-	for (size_t i = 0; i < SIZE; i++)
+    for (int i = 0; i < SIZE; i++)
 	{
 		int x = SIZE - 1;
 		int y = i;
 		xcount = ocount = 0;
-		for (size_t d = 0; d < SIZE - i; d++)
+        for (int d = 0; d < SIZE - i; d++)
 		{
 			if (b[x - d][y + d] == X) xcount++;
 			else xcount = 0;
@@ -136,8 +136,8 @@ State Board::getState()
 
 	// nowin and board filled: draw
 	int count = 0;
-	for (size_t x = 0; x < SIZE; x++)
-		for (size_t y = 0; y < SIZE; y++)
+    for (int x = 0; x < SIZE; x++)
+        for (int y = 0; y < SIZE; y++)
 			if (b[x][y] != EMPTY) count++;
 	if (SIZE*SIZE == count) return DRAW;
 
